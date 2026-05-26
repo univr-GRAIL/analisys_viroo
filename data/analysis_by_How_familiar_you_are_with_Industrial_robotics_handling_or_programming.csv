@@ -1,0 +1,6 @@
+How familiar you are with Industrial robotics handling or programming?,Audioguide_score_mean,Audioguide_score_std,spatial_awareness_score_mean,spatial_awareness_score_std
+Familiar,0.7222222222222222,0.25,0.5555555555555556,0.2603416558635552
+Neutral,0.7083333333333334,0.15957118462605635,0.5,0.2581988897471611
+Unfamiliar,0.6666666666666666,0.23570226039551584,0.4,0.1632993161855452
+Very familiar,0.6666666666666666,,0.4,
+Very unfamiliar,0.8333333333333334,0.0,0.4,0.0
