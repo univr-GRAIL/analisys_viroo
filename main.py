@@ -80,8 +80,20 @@ def preparedata():
     merged_matrix['Participant ID'] = merged_matrix['Participant ID'].astype(int)
     merged_matrix.sort_values(by='Participant ID', inplace=True)
     
+    # Convert float columns that are whole numbers to 'Int64' to avoid '.0' in output
+    for col in merged_matrix.columns:
+        if pd.api.types.is_float_dtype(merged_matrix[col]):
+            # Check if all non-NaN values are integers
+            if merged_matrix[col].dropna().apply(lambda x: x.is_integer()).all():
+                merged_matrix[col] = merged_matrix[col].astype('Int64')
+                
     # 5. Export
-    return merged_matrix
+    output_path = os.path.join(data_dir, 'merged_matrix.csv')
+    merged_matrix.to_csv(output_path, index=False)
+    print(f"Matrix successfully merged and saved to: {output_path}")
+    print(f"Mega matrix dimensions: {merged_matrix.shape}")
+    
+    return output_path
 
 def matrix_analysis(df):
     print("\n--- Starting Data Analysis ---")
@@ -116,21 +128,21 @@ def matrix_analysis(df):
     return df
 
 if __name__ == "__main__":
-    # Prepare the data
-    matrix = preparedata()
+    # 1. Prepare the data and save it to CSV
+    saved_path = preparedata()
     
-    # Perform analysis and reorder columns
-    matrix = matrix_analysis(matrix)
+    # 2. Reload the matrix from the saved file
+    print(f"\nLoading matrix from {saved_path} for analysis...")
+    matrix_loaded = pd.read_csv(saved_path)
     
-    # Save the final reordered matrix back without the .0
-    matrix_path = os.path.join('data', 'merged_matrix.csv')
+    # 3. Perform analysis and reorder columns
+    matrix_loaded = matrix_analysis(matrix_loaded)
     
-    # Convert float columns that are whole numbers to 'Int64' to avoid '.0' in output
-    for col in matrix.columns:
-        if pd.api.types.is_float_dtype(matrix[col]):
-            # Check if all non-NaN values are integers
-            if matrix[col].dropna().apply(lambda x: x.is_integer()).all():
-                matrix[col] = matrix[col].astype('Int64')
+    # 4. Save the final reordered matrix back without the .0
+    for col in matrix_loaded.columns:
+        if pd.api.types.is_float_dtype(matrix_loaded[col]):
+            if matrix_loaded[col].dropna().apply(lambda x: x.is_integer()).all():
+                matrix_loaded[col] = matrix_loaded[col].astype('Int64')
                 
-    matrix.to_csv(matrix_path, index=False)
-    print(f"\nFinal matrix successfully saved to {matrix_path}")
+    matrix_loaded.to_csv(saved_path, index=False)
+    print(f"\nFinal reordered matrix successfully saved to {saved_path}")
