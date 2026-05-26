@@ -150,7 +150,38 @@ def create_evaluation_table(df):
         else:
             print(f"Warning: Question column not found: '{col}'")
             
-    # 4. Save the new evaluation matrix
+    # 4. Compute scores
+    audioguide_cols = [
+        "How can the Meta-MES handle the detection of a defective piece made by the quality control cell? ",
+        "In the Subtractive Manufacturing cell, what is the role of the UR5 robot? ",
+        "The Assembly cell (Cell 4) uses which two types of robotic arms? ",
+        "The Quality Control cell detects defects based on which criteria?",
+        "In the context of the Assembly Cell, what is the role of the OPC-UA server? ",
+        "The VERTIMAG EF system is associated with which facility feature? "
+    ]
+    
+    presence_cols = [
+        "Which is the tallest machine in the lab?",
+        " Which is the dual arm robot?",
+        "How many bays are there in the transport line",
+        "Which machine is closer to the SPEA testing machine?",
+        "How many pallets are on the conveyor?"
+    ]
+    
+    valid_audioguide = [c for c in audioguide_cols if c in eval_df.columns]
+    valid_presence = [c for c in presence_cols if c in eval_df.columns]
+    
+    if valid_audioguide:
+        eval_df['Audioguide_score'] = eval_df[valid_audioguide].sum(axis=1) / len(valid_audioguide)
+    else:
+        print("Warning: Could not compute Audioguide_score (columns missing).")
+        
+    if valid_presence:
+        eval_df['presence_score'] = eval_df[valid_presence].sum(axis=1) / len(valid_presence)
+    else:
+        print("Warning: Could not compute presence_score (columns missing).")
+            
+    # 5. Save the new evaluation matrix
     out_path = os.path.join('data', 'simplified_evaluation.csv')
     eval_df.to_csv(out_path, index=False)
     print(f"Simplified evaluation table successfully saved to: {out_path}")
