@@ -80,20 +80,57 @@ def preparedata():
     merged_matrix['Participant ID'] = merged_matrix['Participant ID'].astype(int)
     merged_matrix.sort_values(by='Participant ID', inplace=True)
     
-    # Convert float columns that are whole numbers to 'Int64' to avoid '.0' in output
-    for col in merged_matrix.columns:
-        if pd.api.types.is_float_dtype(merged_matrix[col]):
-            # Check if all non-NaN values are integers
-            if merged_matrix[col].dropna().apply(lambda x: x.is_integer()).all():
-                merged_matrix[col] = merged_matrix[col].astype('Int64')
-    
     # 5. Export
-    output_path = os.path.join(data_dir, 'merged_matrix.csv')
-    merged_matrix.to_csv(output_path, index=False)
-    print(f"Matrix successfully merged and saved to: {output_path}")
-    print(f"Mega matrix dimensions: {merged_matrix.shape}")
-    
     return merged_matrix
 
+def matrix_analysis(df):
+    print("\n--- Starting Data Analysis ---")
+    
+    # 1. Reorder columns to put open-ended questions at the end
+    col1 = 'Is there anything else you would like to share about your experience with MASTER XR?  '
+    col2 = 'What did you like most about the MASTER XR Educational Scene?  '
+    
+    cols_to_move = [col for col in [col1, col2] if col in df.columns]
+    other_cols = [col for col in df.columns if col not in cols_to_move]
+    df = df[other_cols + cols_to_move]
+    
+    print("Columns reordered: open-ended questions moved to the end.")
+    
+    # 2. Analyze demographics: Female percentage
+    if 'Gender:' in df.columns:
+        genders = df['Gender:'].dropna().astype(str).str.strip().str.lower()
+        total_valid = len(genders)
+        female_count = (genders == 'female').sum()
+        
+        if total_valid > 0:
+            female_percentage = (female_count / total_valid) * 100
+            print("\n[Demographics]")
+            print(f"- Total participants (valid gender): {total_valid}")
+            print(f"- Female participants: {female_count}")
+            print(f"- Female percentage: {female_percentage:.2f}%")
+        else:
+            print("No valid gender data found.")
+    else:
+        print("Column 'Gender:' not found.")
+        
+    return df
+
 if __name__ == "__main__":
-    preparedata()
+    # Prepare the data
+    matrix = preparedata()
+    
+    # Perform analysis and reorder columns
+    matrix = matrix_analysis(matrix)
+    
+    # Save the final reordered matrix back without the .0
+    matrix_path = os.path.join('data', 'merged_matrix.csv')
+    
+    # Convert float columns that are whole numbers to 'Int64' to avoid '.0' in output
+    for col in matrix.columns:
+        if pd.api.types.is_float_dtype(matrix[col]):
+            # Check if all non-NaN values are integers
+            if matrix[col].dropna().apply(lambda x: x.is_integer()).all():
+                matrix[col] = matrix[col].astype('Int64')
+                
+    matrix.to_csv(matrix_path, index=False)
+    print(f"\nFinal matrix successfully saved to {matrix_path}")
