@@ -80,6 +80,13 @@ def preparedata():
     merged_matrix['Participant ID'] = merged_matrix['Participant ID'].astype(int)
     merged_matrix.sort_values(by='Participant ID', inplace=True)
     
+    # Convert float columns that are whole numbers to 'Int64' to avoid '.0' in output
+    for col in merged_matrix.columns:
+        if pd.api.types.is_float_dtype(merged_matrix[col]):
+            # Check if all non-NaN values are integers
+            if merged_matrix[col].dropna().apply(lambda x: x.is_integer()).all():
+                merged_matrix[col] = merged_matrix[col].astype('Int64')
+    
     # 5. Export
     output_path = os.path.join(data_dir, 'merged_matrix.csv')
     merged_matrix.to_csv(output_path, index=False)
