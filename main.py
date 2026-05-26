@@ -58,8 +58,8 @@ def preparedata():
     df_viroo = pd.read_csv(viroo_path, sep=',', encoding='utf-8')
     df_viroo.dropna(how='all', axis=1, inplace=True)
     
-    # Remove Informazioni cronologiche
-    cols_to_drop_viroo = [c for c in df_viroo.columns if 'informazioni cronologiche' in str(c).lower()]
+    # Remove Informazioni cronologiche and system specifications
+    cols_to_drop_viroo = [c for c in df_viroo.columns if 'informazioni cronologiche' in str(c).lower() or 'system specifications' in str(c).lower()]
     df_viroo.drop(columns=cols_to_drop_viroo, inplace=True, errors='ignore')
     
     if 'Participant ID:' in df_viroo.columns:
