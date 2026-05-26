@@ -188,6 +188,36 @@ def create_evaluation_table(df):
     
     return eval_df
 
+def analyze_scores_by_modality(eval_df):
+    print("\n--- Score Analysis by Modality ---")
+    if 'modality' not in eval_df.columns:
+        print("Error: 'modality' column not found.")
+        return None
+        
+    scores_to_analyze = ['Audioguide_score', 'presence_score']
+    available_scores = [s for s in scores_to_analyze if s in eval_df.columns]
+    
+    if not available_scores:
+        print("Error: Score columns not found for analysis.")
+        return None
+        
+    # Group by modality and calculate mean, standard deviation, and count
+    grouped = eval_df.groupby('modality')[available_scores].agg(['mean', 'std', 'count'])
+    
+    # Flatten the hierarchical column names (e.g. Audioguide_score_mean)
+    grouped.columns = ['_'.join(col).strip() for col in grouped.columns.values]
+    grouped.reset_index(inplace=True)
+    
+    # Display the results
+    print(grouped.to_string(index=False))
+    
+    # Save to a new CSV file
+    out_path = os.path.join('data', 'modality_scores_analysis.csv')
+    grouped.to_csv(out_path, index=False)
+    print(f"\nModality analysis successfully saved to: {out_path}")
+    
+    return grouped
+
 if __name__ == "__main__":
     # Prepare the data
     matrix = preparedata()
@@ -197,6 +227,9 @@ if __name__ == "__main__":
     
     # Create the simplified evaluation table for correct answers
     eval_matrix = create_evaluation_table(matrix)
+    
+    # Analyze the scores grouped by modality
+    analyze_scores_by_modality(eval_matrix)
     
     # Save the final reordered matrix back without the .0
     matrix_path = os.path.join('data', 'merged_matrix.csv')
