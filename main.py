@@ -38,6 +38,9 @@ def preparedata():
     # Remove invalid IDs caused by malformed rows in the original CSV
     df_subjects = df_subjects[df_subjects['Participant ID'] <= 30]
     
+    # Remove Participant ID 2 as requested
+    df_subjects = df_subjects[df_subjects['Participant ID'] != 2]
+    
     # 2. Load ICETeach_Teach
     teach_path = os.path.join(data_dir, 'ICETeach_Teach.csv')
     df_teach = pd.read_csv(teach_path, sep=',', encoding='utf-8')
