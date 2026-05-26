@@ -222,8 +222,14 @@ def analyze_all_categories(eval_df):
         if temp_df[category].dtype == object:
             temp_df[category] = temp_df[category].astype(str).str.strip().str.capitalize()
         
-        # Group by category and calculate mean and std
-        grouped = temp_df.groupby(category)[available_scores].agg(['mean', 'std'])
+        # Determine grouping keys to subdivide by modality
+        if category == 'modality':
+            group_keys = ['modality']
+        else:
+            group_keys = ['modality', category]
+            
+        # Group by the keys and calculate mean and std
+        grouped = temp_df.groupby(group_keys)[available_scores].agg(['mean', 'std'])
         
         # Flatten the hierarchical column names
         grouped.columns = ['_'.join(col).strip() for col in grouped.columns.values]
@@ -243,7 +249,7 @@ if __name__ == "__main__":
     matrix = preparedata()
     
     # Perform analysis and reorder columns
-    matrix = matrix_analysis(matrix)
+    #matrix = matrix_analysis(matrix)
     
     # Create the simplified evaluation table for correct answers
     eval_matrix = create_evaluation_table(matrix)
