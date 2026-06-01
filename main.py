@@ -222,14 +222,8 @@ def analyze_all_categories(eval_df):
         if temp_df[category].dtype == object:
             temp_df[category] = temp_df[category].astype(str).str.strip().str.capitalize()
         
-        # Determine grouping keys to subdivide by modality
-        if category == 'modality':
-            group_keys = ['modality']
-        else:
-            group_keys = ['modality', category]
-            
-        # Group by the keys and calculate mean and std
-        grouped = temp_df.groupby(group_keys)[available_scores].agg(['mean', 'std'])
+        # Group by category and calculate mean and std
+        grouped = temp_df.groupby(category)[available_scores].agg(['mean'])#,std
         
         # Flatten the hierarchical column names
         grouped.columns = ['_'.join(col).strip() for col in grouped.columns.values]
@@ -244,6 +238,57 @@ def analyze_all_categories(eval_df):
         grouped.to_csv(out_path, index=False)
         print(f"Analysis saved to: {out_path}")
 
+def analyze_all_categories_modality(eval_df):
+    categories = [
+        'modality',
+        'Experience Gaming',
+        'Highest level of education:',
+        'How familiar you are with Industrial environment and processes?',
+        'How familiar you are with Industrial robotics handling or programming?'
+    ]
+    
+    scores_to_analyze = ['Audioguide_score', 'spatial_awareness_score']
+    available_scores = [s for s in scores_to_analyze if s in eval_df.columns]
+    
+    if not available_scores:
+        print("Error: Score columns not found for analysis.")
+        return None
+        
+    for category in categories:
+        if category not in eval_df.columns:
+            print(f"Warning: '{category}' column not found. Skipping analysis.")
+            continue
+            
+        print(f"\n--- Score Analysis by {category} ---")
+        
+        # Clean string categories for consistent grouping
+        temp_df = eval_df.copy()
+        if temp_df[category].dtype == object:
+            temp_df[category] = temp_df[category].astype(str).str.strip().str.capitalize()
+        
+        # Determine grouping keys to subdivide by modality
+        if category == 'modality':
+            group_keys = ['modality']
+        else:
+            group_keys = ['modality', category]
+            
+        # Group by the keys and calculate mean and std
+        grouped = temp_df.groupby(group_keys)[available_scores].agg(['mean'])#,std
+        
+        # Flatten the hierarchical column names
+        grouped.columns = ['_'.join(col).strip() for col in grouped.columns.values]
+        grouped.reset_index(inplace=True)
+        
+        # Display the results
+        print(grouped.to_string(index=False))
+        
+        # Save to a new CSV file
+        safe_name = category.replace(' ', '_').replace('?', '').replace(':', '')
+        out_path = os.path.join('data', f'analysis_by_{safe_name}.csv')
+        grouped.to_csv(out_path, index=False)
+        print(f"Analysis saved to: {out_path}")
+
+
 if __name__ == "__main__":
     # Prepare the data
     matrix = preparedata()
@@ -256,6 +301,9 @@ if __name__ == "__main__":
     
     # Analyze the scores grouped by all specified categories
     analyze_all_categories(eval_matrix)
+    
+    # Analyze the scores grouped by all specified categories including modality
+    #analyze_all_categories_modality(eval_matrix)
     
     # Save the final reordered matrix back without the .0
     matrix_path = os.path.join('data', 'merged_matrix.csv')

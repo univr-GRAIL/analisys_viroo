@@ -1,7 +1,3 @@
-modality,Highest level of education:,Audioguide_score_mean,Audioguide_score_std,spatial_awareness_score_mean,spatial_awareness_score_std
-DES,High school,0.5833333333333333,0.21516574145596765,0.30000000000000004,0.11547005383792516
-DES,University Education,0.5833333333333333,0.11785113019775793,0.30000000000000004,0.14142135623730953
-VR,High school,0.8333333333333334,,0.4,
-VR,University Education,0.8333333333333333,0.19245008972987526,0.6,0.2
-presence,High school,0.8333333333333334,,0.4,
-presence,University Education,0.6666666666666667,0.2041241452319315,0.6,0.24494897427831783
+Highest level of education:,Audioguide_score_mean,spatial_awareness_score_mean
+High school,0.6666666666666666,0.325
+University Education,0.7333333333333333,0.5466666666666667

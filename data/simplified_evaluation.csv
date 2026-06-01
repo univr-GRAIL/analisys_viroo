@@ -1,21 +1,24 @@
 Participant ID,nation,modality,Test modality,Gender:,Age:,Highest level of education:,Current occupation:  ,Experience Gaming,How familiar you are with Industrial environment and processes?,How familiar you are with Industrial robotics handling or programming?,How can the Meta-MES handle the detection of a defective piece made by the quality control cell? ,"In the Subtractive Manufacturing cell, what is the role of the UR5 robot? ",The Assembly cell (Cell 4) uses which two types of robotic arms? ,The Quality Control cell detects defects based on which criteria?,"In the context of the Assembly Cell, what is the role of the OPC-UA server? ",The VERTIMAG EF system is associated with which facility feature? ,Which is the tallest machine in the lab?, Which is the dual arm robot?,How many bays are there in the transport line,Which machine is closer to the SPEA testing machine?,How many pallets are on the conveyor?,Audioguide_score,spatial_awareness_score
-1,italian,VR,Meta Quest,Male,30-34,University Education,Student in Robotics,high,Familiar,Familiar,True,True,True,True,True,True,True,True,False,True,True,1.0,0.8
-3,italian,VR,Meta Quest,Male,35-44,University Education,Student in Robotics,high,Unfamiliar,Neutral,False,False,True,True,True,False,True,True,True,True,False,0.5,0.8
-4,italian,DES,Desktop,Male,18-24,High school,Student in Robotics,high,Familiar,Neutral,True,True,True,True,False,True,False,False,False,True,False,0.8333333333333334,0.2
-5,italian,DES,Desktop,Female,18-24,High school,Student in Robotics,Moderate,Unfamiliar,Unfamiliar,True,True,False,True,True,False,False,False,True,False,True,0.6666666666666666,0.4
-6,italian,DES,Desktop,Male,18-24,High school,Student in Robotics,high,Familiar,Unfamiliar,True,False,False,True,False,False,False,False,False,False,True,0.3333333333333333,0.2
-7,italian,VR,Meta Quest,Male,25-29,University Education,Student in Robotics,high,Familiar,Familiar,True,True,True,True,True,True,True,True,False,True,True,1.0,0.8
-8,italian,presence,In presence,Male,18-24,University Education,Student in Robotics,high,Familiar,Familiar,True,True,False,False,True,True,False,False,False,False,True,0.6666666666666666,0.2
-9,italian,presence,In presence,Male,18-24,University Education,Student in Robotics,high,Neutral,Familiar,True,False,True,True,True,True,True,True,True,False,True,0.8333333333333334,0.8
+1,italiana,VR,Meta Quest,Male,30-34,University Education,Student in Robotics,high,Familiar,Familiar,True,True,True,True,True,True,True,True,False,True,True,1.0,0.8
+3,italiana,VR,Meta Quest,Male,35-44,University Education,Student in Robotics,high,Unfamiliar,Neutral,False,False,True,True,True,False,True,True,True,True,False,0.5,0.8
+4,italiana,DES,Desktop,Male,18-24,High school,Student in Robotics,high,Familiar,Neutral,True,True,True,True,False,True,False,False,False,True,False,0.8333333333333334,0.2
+5,italiana,DES,Desktop,Female,18-24,High school,Student in Robotics,Moderate,Unfamiliar,Unfamiliar,True,True,False,True,True,False,False,False,True,False,True,0.6666666666666666,0.4
+6,italiana,DES,Desktop,Male,18-24,High school,Student in Robotics,high,Familiar,Unfamiliar,True,False,False,True,False,False,False,False,False,False,True,0.3333333333333333,0.2
+7,italiana,VR,Meta Quest,Male,25-29,University Education,Student in Robotics,high,Familiar,Familiar,True,True,True,True,True,True,True,True,False,True,True,1.0,0.8
+8,italiana,presence,In presence,Male,18-24,University Education,Student in Robotics,high,Familiar,Familiar,True,True,False,False,True,True,False,False,False,False,True,0.6666666666666666,0.2
+9,italiana,presence,In presence,Male,18-24,University Education,Student in Robotics,high,Neutral,Familiar,True,False,True,True,True,True,True,True,True,False,True,0.8333333333333334,0.8
 10,Tunisian,presence,In presence,Male,18-24,High school,Student in Robotics,high,Neutral,Very unfamiliar,True,True,True,True,True,False,False,True,False,False,True,0.8333333333333334,0.4
 11,Iranian,presence,In presence,Male,18-24,University Education,Student in Robotics,high,Unfamiliar,Unfamiliar,True,False,True,True,True,True,True,True,False,True,False,0.8333333333333334,0.6
 12,Togolese,presence,In presence,Male,25-29,University Education,Student in Robotics,high,Neutral,Neutral,True,False,False,True,True,True,True,True,False,False,True,0.6666666666666666,0.6
-13,italian,presence,In presence,Female,18-24,University Education,Student in Robotics,No,Neutral,Familiar,True,False,False,True,False,False,True,True,False,True,True,0.3333333333333333,0.8
-14,italian,DES,Desktop,Male,18-24,High school,Student in Robotics,high,Neutral,Familiar,True,False,True,True,False,False,True,False,False,False,True,0.5,0.4
-15,italian,VR,Meta Quest,Female,18-24,High school,Student in Robotics,No,Very unfamiliar,Neutral,True,True,True,True,True,False,True,True,False,False,False,0.8333333333333334,0.4
-16,italian,VR,Meta Quest,Male,18-24,University Education,Student in Robotics,No,Very unfamiliar,Very unfamiliar,True,True,False,True,True,True,True,False,False,True,False,0.8333333333333334,0.4
-17,italian,DES,Desktop,Female,25-29,University Education,Student in Robotics,No,Unfamiliar,Familiar,True,False,False,True,True,False,False,False,False,True,True,0.5,0.4
-18,italian,VR,Meta Quest,Male,25-29,University Education,Student in Robotics,high,Familiar,Very familiar,True,True,False,False,True,True,True,False,True,False,False,0.6666666666666666,0.4
-19,italian,VR,Meta Quest,Male,25-29,University Education,Student in Robotics,high,Unfamiliar,Familiar,True,True,True,True,True,True,True,True,False,True,False,1.0,0.6
-20,italian,VR,Meta Quest,Female,25-29,University Education,Student in Robotics,No,Unfamiliar,Unfamiliar,True,True,False,True,True,True,False,False,True,False,True,0.8333333333333334,0.4
-21,italian,DES,Desktop,Male,25-29,University Education,Student in Robotics,Moderate,Neutral,Familiar,True,False,True,True,True,False,False,True,False,False,False,0.6666666666666666,0.2
+13,italiana,presence,In presence,Female,18-24,University Education,Student in Robotics,No,Neutral,Familiar,True,False,False,True,False,False,True,True,False,True,True,0.3333333333333333,0.8
+14,italiana,DES,Desktop,Male,18-24,High school,Student in Robotics,high,Neutral,Familiar,True,False,True,True,False,False,True,False,False,False,True,0.5,0.4
+15,italiana,VR,Meta Quest,Female,18-24,High school,Student in Robotics,No,Very unfamiliar,Neutral,True,True,True,True,True,False,True,True,False,False,False,0.8333333333333334,0.4
+16,italiana,VR,Meta Quest,Male,18-24,University Education,Student in Robotics,No,Very unfamiliar,Very unfamiliar,True,True,False,True,True,True,True,False,False,True,False,0.8333333333333334,0.4
+17,italiana,DES,Desktop,Female,25-29,University Education,Student in Robotics,No,Unfamiliar,Familiar,True,False,False,True,True,False,False,False,False,True,True,0.5,0.4
+18,italiana,VR,Meta Quest,Male,25-29,University Education,Student in Robotics,high,Familiar,Very familiar,True,True,False,False,True,True,True,False,True,False,False,0.6666666666666666,0.4
+19,italiana,VR,Meta Quest,Male,25-29,University Education,Student in Robotics,high,Unfamiliar,Familiar,True,True,True,True,True,True,True,True,False,True,False,1.0,0.6
+20,italiana,VR,Meta Quest,Female,25-29,University Education,Student in Robotics,No,Unfamiliar,Unfamiliar,True,True,False,True,True,True,False,False,True,False,True,0.8333333333333334,0.4
+21,italiana,DES,Desktop,Male,25-29,University Education,Student in Robotics,Moderate,Neutral,Familiar,True,False,True,True,True,False,False,True,False,False,False,0.6666666666666666,0.2
+22,italiana,VR,Meta Quest,Male,18-24,High school,Student in Robotics,Moderate,Unfamiliar,Unfamiliar,True,False,True,False,True,True,False,False,False,False,False,0.6666666666666666,0.0
+23,italiana,DES,Desktop,Male,18-24,University Education,Student in Robotics,high,Neutral,Familiar,True,True,False,True,True,False,False,False,True,False,True,0.6666666666666666,0.4
+24,italiana,DES,Desktop,Male,18-24,High school,waiter,Moderate,Neutral,Unfamiliar,True,True,False,True,False,True,True,False,True,False,True,0.6666666666666666,0.6
