@@ -1,0 +1,7 @@
+Time:375,2098 | Interacted Panel: Vertical Warehouse | Interaction Distance: 0,7901637
+Time:402,1666 | Interacted Panel: Quality Control | Interaction Distance: 0,6885484
+Time:439,4986 | Interacted Panel: Kuka iiwa 14 R820 | Interaction Distance: 1,123838
+Time:440,6234 | Interacted Panel: Kuka iiwa 14 R820 | Interaction Distance: 1,123838
+Time:471,0246 | Interacted Panel: Yumi ABB - MGE-Q5965-YUMI | Interaction Distance: 0,9646073
+Time:500,3844 | Interacted Panel: ConceptMill 105 EMCO | Interaction Distance: 0,6553252
+Time:521,7741 | Interacted Panel: SPEA-Flying Probe 4020 S2 | Interaction Distance: 0,4856656

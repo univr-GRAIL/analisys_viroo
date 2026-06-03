@@ -1,5 +1,10 @@
-How familiar you are with Industrial environment and processes?,Audioguide_score_mean,spatial_awareness_score_mean
-Familiar,0.75,0.43333333333333335
-Neutral,0.6458333333333334,0.525
-Unfamiliar,0.7142857142857143,0.4571428571428572
-Very unfamiliar,0.8333333333333334,0.4
+modality,How familiar you are with Industrial environment and processes?,Audioguide_score_mean,spatial_awareness_score_mean,Total_Distance_m_mean,Interactions_Count_mean
+DES,Familiar,0.5833333333333334,0.2,100.31,0.5
+DES,Neutral,0.625,0.4,272.005,1.5
+DES,Unfamiliar,0.5833333333333333,0.4,80.11,0.0
+VR,Familiar,0.8888888888888888,0.6666666666666666,91.2,2.3333333333333335
+VR,Unfamiliar,0.75,0.45,61.92666666666667,2.6666666666666665
+VR,Very unfamiliar,0.8333333333333334,0.4,62.765,0.0
+presence,Familiar,0.6666666666666666,0.2,,
+presence,Neutral,0.6666666666666666,0.65,,
+presence,Unfamiliar,0.8333333333333334,0.6,,

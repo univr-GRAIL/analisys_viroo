@@ -1,0 +1,11 @@
+Time:344,4247 | Interacted Panel: Quality Control | Interaction Distance: 0,5369183
+Time:374,417 | Interacted Panel: Quality Control | Interaction Distance: 0,639051
+Time:402,5787 | Interacted Panel: SPEA-Flying Probe 4020 S2 | Interaction Distance: 0,7312027
+Time:424,3604 | Interacted Panel: ConceptMill 105 EMCO | Interaction Distance: 1,149658
+Time:448,3509 | Interacted Panel: Yumi ABB - MGE-Q5965-YUMI | Interaction Distance: 0,48877
+Time:467,0521 | Interacted Panel: Vertical Warehouse | Interaction Distance: 0,437138
+Time:536,8975 | Interacted Panel: Yumi ABB - MGE-Q5965-YUMI | Interaction Distance: 0,6375004
+Time:536,8975 | Interacted Panel: CollaborICE MGE-S7259 v1 | Interaction Distance: 1,406166
+Time:575,875 | Interacted Panel: Quality Control | Interaction Distance: 0,44501
+Time:608,7735 | Interacted Panel: Vertical Warehouse | Interaction Distance: 0,4386808
+

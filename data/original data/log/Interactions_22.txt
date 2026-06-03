@@ -1,0 +1,16 @@
+Time:410,203 | Interacted Panel: Vertical Warehouse | Interaction Distance: 1,35216
+Time:459,8087 | Interacted Panel: Quality Control | Interaction Distance: 1,029791
+Time:488,2996 | Interaction: 
+User said:  What are they putting on the top of the bed?
+Wait for the answer...
+VA: The Quality Control system includes a Basler acA1600-60gm GigE camera and a Gocator 3210A laser scanner. These components are used for visual and 3D inspection of products. The system is housed in a darkened cabin to prevent lighting interference. A notification triggers a rejection procedure for defective parts.
+Time:495,7189 | Interaction: 
+User said:  Quality control system includes a baller.
+Wait for the answer...
+VA: The Quality Control system includes a Basler acA1600-60gm GigE camera with a CMOS e2v EV76C570 sensor. It operates at 60 frames per second with a 2-megapixel resolution for product quality checks. This camera interfaces with an EDGE computer for real-time processing. It is housed in a darkened booth to prevent light interference.
+Time:537,2341 | Interaction: 
+User said:  What does this place produce?
+Wait for the answer...
+VA: The provided documentation does not specify what products this quality control system is used to inspect. It details the components of the visual control cell: a Basler acA1600-60gm camera and a Gocator 3210A laser scanner, connected to an EDGE computer for real-time processing and defect detection.
+Time:563,3303 | Interacted Panel: Kuka iiwa 14 R820 | Interaction Distance: 1,435803
+Time:599,7314 | Interacted Panel: CollaborICE MGE-S7259 v1 | Interaction Distance: 1,128896

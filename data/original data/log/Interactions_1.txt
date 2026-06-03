@@ -1,0 +1,31 @@
+Time:377,0304 | Interaction: 
+User said:  What a robot this is.
+Wait for the answer...
+VA: The ABB YuMi IRB14000 is a dual-arm collaborative robot designed for assembly tasks. Its flexible and human-friendly design allows it to work alongside people. YuMi offers precise movements and a wide range of motion.
+Time:424,3357 | Interaction: 
+User said:  How many cassettes does the magazine have?
+Wait for the answer...
+VA: The VERTIMAG EF has a maximum capacity of 60 cassettes.
+The cassette dimensions vary, supporting heights from 200 mm to 900 mm.
+The machine can store up to 150 kg per cassette.
+This ensures efficient use of vertical space for inventory management.
+Time:460,0001 | Interaction: 
+User said:  What robot is the one above the mobile base?
+Wait for the answer...
+VA: The RB-KAIROS is a mobile robot. No other robot is depicted above the mobile base on its product page.
+Time:480,9435 | Interaction: 
+User said:  What brand is the manipulator used by Kairos?
+Wait for the answer...
+VA: The RB-KAIROS does not come with a manipulator as a standard component. It is designed to integrate with various robotic arms.
+Time:520,8832 | Interaction: 
+User said:  What kind of robot is this in front of me?
+Wait for the answer...
+VA: The ICE Laboratory features several robots: an ABB YuMi IRB14000 dual-arm robot, a Kuka LBR iiwa 14 R820 robot, and UR5 robotic arms for loading/unloading.
+Time:556,6197 | Interaction: 
+User said:  How many cards does the shot have?
+Wait for the answer...
+VA: The provided documentation does not contain information about "cards" in relation to the selected product. The ICE Laboratory is a cyber-physical factory demonstrator featuring various manufacturing and sensing equipment.
+Time:583,6177 | Interaction: 
+User said:  What is this table for?
+Wait for the answer...
+VA: The ICE Laboratory is a demonstrator for Industry 4.0 and Industry 5.0. It integrates manufacturing hardware, industrial software, digital twins, XR, AI, and safety systems. Its purpose is to support education, research, and technology transfer in areas like robotics, automation, and predictive maintenance within a realistic industrial setting.

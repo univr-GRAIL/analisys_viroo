@@ -1,0 +1,4 @@
+Time:524,0486 | Interaction: 
+User said:  How many different types of materials can the Quality Control Cell database have?
+Wait for the answer...
+VA: The provided documentation does not specify the number of material types the Quality Control Cell database can handle.

@@ -1,8 +1,9 @@
 import pandas as pd
 import os
+import math
 
 def preparedata():
-    data_dir = 'data'
+    data_dir = 'data/original data/question'
     
     # 1. Load ICETeachStudySubjects
     subjects_path = os.path.join(data_dir, 'ICETeachStudySubjects.csv')
@@ -86,37 +87,189 @@ def preparedata():
     # 5. Export
     return merged_matrix
 
-def matrix_analysis(df):
-    print("\n--- Starting Data Analysis ---")
+
+def parse_position(pos_str):
+    """Helper function to parse the position tuple string into a float tuple."""
+    try:
+        clean_str = pos_str.replace('(', '').replace(')', '')
+        parts = clean_str.split(',')
+        if len(parts) == 3:
+            return (float(parts[0].strip()), float(parts[1].strip()), float(parts[2].strip()))
+    except Exception:
+        pass
+    return None
+
+
+def log_analysis(df, start_time_sec=120.0):
+    print(f"\n--- Starting Log Analysis (skipping first {start_time_sec}s) ---")
     
-    # 1. Reorder columns to put open-ended questions at the end
-    col1 = 'Is there anything else you would like to share about your experience with MASTER XR?  '
-    col2 = 'What did you like most about the MASTER XR Educational Scene?  '
-    
-    cols_to_move = [col for col in [col1, col2] if col in df.columns]
-    other_cols = [col for col in df.columns if col not in cols_to_move]
-    df = df[other_cols + cols_to_move]
-    
-    print("Columns reordered: open-ended questions moved to the end.")
-    
-    # 2. Analyze demographics: Female percentage
-    if 'Gender:' in df.columns:
-        genders = df['Gender:'].dropna().astype(str).str.strip().str.lower()
-        total_valid = len(genders)
-        female_count = (genders == 'female').sum()
+    log_dir = os.path.join('data', 'original data', 'log')
+    if not os.path.exists(log_dir):
+        print(f"Log directory not found at {log_dir}")
+        return df
         
-        if total_valid > 0:
-            female_percentage = (female_count / total_valid) * 100
-            print("\n[Demographics]")
-            print(f"- Total participants (valid gender): {total_valid}")
-            print(f"- Female participants: {female_count}")
-            print(f"- Female percentage: {female_percentage:.2f}%")
-        else:
-            print("No valid gender data found.")
-    else:
-        print("Column 'Gender:' not found.")
+    # Initialize new columns with NA
+    df['Total_Distance_m'] = pd.NA
+    df['Interactions_Count'] = pd.NA
+    df['Most_Looked_Machine'] = pd.NA
+    df['Most_Interacted_Machine'] = pd.NA
+    df['Total_Time_s'] = pd.NA
+    
+    global_interacted_objects = {}
+    global_looked_objects = {}
+    
+    for index, row in df.iterrows():
+        participant_id = row.get('Participant ID')
+        if pd.isna(participant_id):
+            continue
+            
+        try:
+            p_id = int(participant_id)
+        except ValueError:
+            continue
+        
+        # 1. Parse Interactions log
+        interactions_file = os.path.join(log_dir, f'Interactions_{p_id}.txt')
+        if os.path.exists(interactions_file):
+            interactions_count = 0
+            interacted_objects = {}
+            try:
+                with open(interactions_file, 'r', encoding='utf-8') as f:
+                    current_time = 0.0
+                    for line in f:
+                        if line.startswith('Time:'):
+                            parts = line.split('|')
+                            time_str = parts[0].replace('Time:', '').strip().replace(',', '.')
+                            try:
+                                current_time = float(time_str)
+                            except ValueError:
+                                pass
+                                
+                            if current_time >= start_time_sec:
+                                for part in parts:
+                                    part = part.strip()
+                                    if part.startswith('Interacted Panel:'):
+                                        panel = part.replace('Interacted Panel:', '').strip()
+                                        if panel:
+                                            interacted_objects[panel] = interacted_objects.get(panel, 0) + 1
+                                            global_interacted_objects[panel] = global_interacted_objects.get(panel, 0) + 1
+                                            
+                        elif 'User said:' in line:
+                            if current_time >= start_time_sec:
+                                interactions_count += 1
+                
+                df.at[index, 'Interactions_Count'] = interactions_count
+                
+                most_interacted = 'None'
+                if interacted_objects:
+                    most_interacted = max(interacted_objects, key=interacted_objects.get)
+                df.at[index, 'Most_Interacted_Machine'] = most_interacted
+                
+            except Exception as e:
+                print(f"Error reading {interactions_file}: {e}")
+        
+        # 2. Parse Movement and Gaze log
+        movement_file = os.path.join(log_dir, f'MovementGaze_{p_id}.txt')
+        if os.path.exists(movement_file):
+            total_distance = 0.0
+            total_time = 0.0
+            looked_objects = {}
+            try:
+                with open(movement_file, 'r', encoding='utf-8') as f:
+                    prev_pos = None
+                    for line in f:
+                        line = line.strip()
+                        if not line:
+                            continue
+                            
+                        parts = line.split('|')
+                        if len(parts) == 0:
+                            continue
+                            
+                        # Extract and check time
+                        time_str = parts[0].replace('Time:', '').strip().replace(',', '.')
+                        try:
+                            current_time = float(time_str)
+                            total_time = max(total_time, current_time)
+                        except ValueError:
+                            continue
+                            
+                        if current_time < start_time_sec:
+                            continue
+                            
+                        pos = None
+                        looking_to = None
+                        
+                        for part in parts:
+                            part = part.strip()
+                            if part.startswith('Pos:'):
+                                pos_str = part.replace('Pos:', '').strip()
+                                pos = parse_position(pos_str)
+                            elif part.startswith('Looking To:'):
+                                looking_to = part.replace('Looking To:', '').strip()
+                                
+                        if pos is not None:
+                            if prev_pos is not None:
+                                dist = math.sqrt(sum((a - b)**2 for a, b in zip(pos, prev_pos)))
+                                total_distance += dist
+                            prev_pos = pos
+                            
+                        if looking_to is not None and looking_to.lower() != 'no object' and looking_to != '':
+                            looked_objects[looking_to] = looked_objects.get(looking_to, 0) + 1
+                            global_looked_objects[looking_to] = global_looked_objects.get(looking_to, 0) + 1
+                            
+                most_looked = 'None'
+                if looked_objects:
+                    most_looked = max(looked_objects, key=looked_objects.get)
+                    
+                df.at[index, 'Total_Distance_m'] = round(total_distance, 2)
+                df.at[index, 'Total_Time_s'] = round(total_time, 2)
+                df.at[index, 'Most_Looked_Machine'] = most_looked
+                
+                print(f"Participant {p_id}: Time={total_time:.2f}s, Dist={total_distance:.2f}m, Interactions={df.at[index, 'Interactions_Count']}, Most Looked={most_looked}")
+                
+            except Exception as e:
+                print(f"Error reading {movement_file}: {e}")
+        
+    # After processing all logs, calculate statistics by modality
+    print("\n--- Log Analysis Statistics by Modality ---")
+    if 'modality' in df.columns:
+        temp_df = df.copy()
+        temp_df['Total_Distance_m'] = pd.to_numeric(temp_df['Total_Distance_m'], errors='coerce')
+        temp_df['Interactions_Count'] = pd.to_numeric(temp_df['Interactions_Count'], errors='coerce')
+        temp_df['Total_Time_s'] = pd.to_numeric(temp_df['Total_Time_s'], errors='coerce')
+        
+        metrics = ['Total_Distance_m', 'Interactions_Count', 'Total_Time_s']
+        grouped = temp_df.groupby('modality')[metrics].mean(numeric_only=True).round(2)
+        grouped.reset_index(inplace=True)
+        print(grouped.to_string(index=False))
+        
+        out_path = os.path.join('data', 'log_analysis_by_modality.csv')
+        grouped.to_csv(out_path, index=False)
+        print(f"Log statistics saved to: {out_path}")
+        
+    print("\n--- Global Most Interacted Machines ---")
+    if global_interacted_objects:
+        interacted_df = pd.DataFrame(list(global_interacted_objects.items()), columns=['Machine', 'Total_Interactions'])
+        interacted_df.sort_values(by='Total_Interactions', ascending=False, inplace=True)
+        print(interacted_df.to_string(index=False))
+        interacted_out = os.path.join('data', 'global_interacted_machines.csv')
+        interacted_df.to_csv(interacted_out, index=False)
+        print(f"Global interacted machines saved to: {interacted_out}")
+
+    print("\n--- Global Most Looked Machines ---")
+    if global_looked_objects:
+        looked_df = pd.DataFrame(list(global_looked_objects.items()), columns=['Machine', 'Total_Looks_Frames'])
+        looked_df.sort_values(by='Total_Looks_Frames', ascending=False, inplace=True)
+        # Convert frames to approximate seconds (assuming 1 frame = 0.01s as seen in logs)
+        looked_df['Approx_Total_Time_s'] = looked_df['Total_Looks_Frames'] * 0.01
+        print(looked_df.head(10).to_string(index=False)) # print top 10
+        looked_out = os.path.join('data', 'global_looked_machines.csv')
+        looked_df.to_csv(looked_out, index=False)
+        print(f"Global looked machines saved to: {looked_out}")
         
     return df
+
 
 def create_evaluation_table(df):
     print("\n--- Creating Simplified Evaluation Table ---")
@@ -298,15 +451,13 @@ if __name__ == "__main__":
     
     # Create the simplified evaluation table for correct answers
     eval_matrix = create_evaluation_table(matrix)
-    
-    # Analyze the scores grouped by all specified categories
-    analyze_all_categories(eval_matrix)
-    
-    # Analyze the scores grouped by all specified categories including modality
-    #analyze_all_categories_modality(eval_matrix)
-    
+
+    # Perform log analysis to append distance, gaze, and interactions
+    # Skipping the first 120 seconds (2 minutes) where the user is stationary
+    matrix = log_analysis(matrix, start_time_sec=180.0)
+
     # Save the final reordered matrix back without the .0
-    matrix_path = os.path.join('data', 'merged_matrix.csv')
+    matrix_path = os.path.join('data', 'final_matrix.csv')
     
     # Convert float columns that are whole numbers to 'Int64' to avoid '.0' in output
     for col in matrix.columns:
@@ -317,3 +468,11 @@ if __name__ == "__main__":
                 
     matrix.to_csv(matrix_path, index=False)
     print(f"\nFinal matrix successfully saved to {matrix_path}")
+    
+    # Analyze the scores grouped by all specified categories
+    #analyze_all_categories(eval_matrix)
+    
+    # Analyze the scores grouped by all specified categories including modality
+    #analyze_all_categories_modality(eval_matrix)
+    
+    

@@ -1,0 +1,6 @@
+Time:340,984 | Interacted Panel: Quality Control | Interaction Distance: 0,9408115
+Time:381,0805 | Interacted Panel: ConceptMill 105 EMCO | Interaction Distance: 1,155947
+Time:406,8436 | Interacted Panel: ConceptMill 105 EMCO | Interaction Distance: 1,155947
+Time:440,5241 | Interacted Panel: SPEA-Flying Probe 4020 S2 | Interaction Distance: 0,7887592
+Time:522,8543 | Interacted Panel: Kuka iiwa 14 R820 | Interaction Distance: 1,220256
+Time:551,1707 | Interacted Panel: CollaborICE MGE-S7259 v1 | Interaction Distance: 1,056598
