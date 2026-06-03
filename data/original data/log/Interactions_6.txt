@@ -1,0 +1,4 @@
+Time:351,2874 | Interacted Panel: Quality Control | Interaction Distance: 0,6731009
+Time:403,16 | Interacted Panel: Quality Control | Interaction Distance: 0,5563463
+Time:479,1788 | Interacted Panel: SPEA-Flying Probe 4020 S2 | Interaction Distance: 1,054562
+Time:489,4076 | Interacted Panel: ConceptMill 105 EMCO | Interaction Distance: 1,494928

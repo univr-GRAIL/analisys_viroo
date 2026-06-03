@@ -1,0 +1,4 @@
+Time:437,941 | Interaction: 
+User said:  How many objects does this warehouse contain?
+Wait for the answer...
+VA: The VERTIMAG EF is a vertical lift module. It stores items on trays within a self-supporting structure. The number of objects it can contain depends on the tray configuration and the size/quantity of items stored. It is designed for high-density storage.

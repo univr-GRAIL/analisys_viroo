@@ -1,0 +1,17 @@
+Time:381,5638 | Interacted Panel: Vertical Warehouse | Interaction Distance: 0,6118789
+Time:410,8002 | Interacted Panel: Quality Control | Interaction Distance: 0,7430279
+Time:449,6606 | Interaction: 
+User said:  And if a material has defects, where it goes?
+Wait for the answer...
+VA: The RB-KAIROS is a mobile robot platform and does not have functionalities for material inspection or defect identification. Its purpose is to transport payloads.
+Time:479,2955 | Interaction: 
+User said:  And if a material has defects, where it goes?
+Wait for the answer...
+VA: If a defective piece is detected, the system receives a notification and initiates the rejection procedure.
+Time:526,328 | Interacted Panel: Yumi ABB - MGE-Q5965-YUMI | Interaction Distance: 0,7923204
+Time:564,2103 | Interaction: 
+User said:  What kind of grippers are equipped?
+Wait for the answer...
+VA: The ABB YuMi IRB14000 can be equipped with a variety of grippers. Standard options include vacuum grippers and vacuum cups, as well as electrical and pneumatic grippers. It also supports custom gripper solutions.
+Time:606,0406 | Interacted Panel: ConceptMill 105 EMCO | Interaction Distance: 0,7388884
+Time:626,4869 | Interacted Panel: SPEA-Flying Probe 4020 S2 | Interaction Distance: 0,6534387

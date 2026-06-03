@@ -1,0 +1,2 @@
+Time:446,6775 | Interacted Panel: Quality Control | Interaction Distance: 0,7643868
+Time:468,4466 | Interacted Panel: Quality Control | Interaction Distance: 0,7643868

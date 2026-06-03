@@ -1,0 +1,8 @@
+Time:540,9233 | Interaction: 
+User said:  What is the computer of this robot BluePen?
+Wait for the answer...
+VA: The provided documentation does not contain information about a "robot BluePen" or its associated computer. The ICE Laboratory features various robots such as ABB YuMi, Kuka LBR iiwa, and UR5 arms, but "BluePen" is not mentioned.
+Time:569,0216 | Interaction: 
+User said:  What does the blue robot do?
+Wait for the answer...
+VA: The provided documentation does not specify a "blue robot." However, it does mention a Kuka LBR iiwa 14 R820 robot used for heavier collaborative operations in the robotic assembly cell. It also states that the ABB YuMi IRB14000 is a dual-arm robot for high-precision small-object manipulation.

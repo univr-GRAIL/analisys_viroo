@@ -1,3 +1,7 @@
-Highest level of education:,Audioguide_score_mean,spatial_awareness_score_mean
-High school,0.6666666666666666,0.325
-University Education,0.7333333333333333,0.5466666666666667
+modality,Highest level of education:,Audioguide_score_mean,spatial_awareness_score_mean,Total_Distance_m_mean,Interactions_Count_mean
+DES,High school,0.6,0.36,153.3025,0.25
+DES,University Education,0.611111111111111,0.3333333333333333,145.82,1.5
+VR,High school,0.75,0.2,84.16,0.0
+VR,University Education,0.8333333333333333,0.6,71.53571428571429,2.142857142857143
+presence,High school,0.8333333333333334,0.4,,
+presence,University Education,0.6666666666666667,0.6,,

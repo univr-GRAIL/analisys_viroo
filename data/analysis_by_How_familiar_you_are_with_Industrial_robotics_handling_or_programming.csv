@@ -1,6 +1,13 @@
-How familiar you are with Industrial robotics handling or programming?,Audioguide_score_mean,spatial_awareness_score_mean
-Familiar,0.7166666666666666,0.54
-Neutral,0.7083333333333334,0.5
-Unfamiliar,0.6666666666666666,0.3666666666666667
-Very familiar,0.6666666666666666,0.4
-Very unfamiliar,0.8333333333333334,0.4
+modality,How familiar you are with Industrial robotics handling or programming?,Audioguide_score_mean,spatial_awareness_score_mean,Total_Distance_m_mean,Interactions_Count_mean
+DES,Familiar,0.5833333333333333,0.35000000000000003,207.5666666666667,1.0
+DES,Neutral,0.8333333333333334,0.2,100.31,1.0
+DES,Unfamiliar,0.5555555555555555,0.39999999999999997,90.92,0.0
+VR,Familiar,1.0,0.7333333333333334,89.90333333333335,2.6666666666666665
+VR,Neutral,0.6666666666666667,0.6000000000000001,82.3,2.5
+VR,Unfamiliar,0.75,0.2,27.25,2.0
+VR,Very familiar,0.6666666666666666,0.4,81.98,0.0
+VR,Very unfamiliar,0.8333333333333334,0.4,41.37,0.0
+presence,Familiar,0.611111111111111,0.6,,
+presence,Neutral,0.6666666666666666,0.6,,
+presence,Unfamiliar,0.8333333333333334,0.6,,
+presence,Very unfamiliar,0.8333333333333334,0.4,,

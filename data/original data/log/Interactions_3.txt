@@ -1,0 +1,21 @@
+Time:370,1807 | Interaction: 
+User said:  EO.
+Wait for the answer...
+VA: As a specialized technical expert for the ABB YuMi IRB14000, my function is to provide information based on the product documentation. The provided material does not contain information regarding who said what.
+Time:373,0273 | Interaction: 
+User said:  EO.
+Wait for the answer...
+VA: As a specialized technical expert for the ABB YuMi IRB14000, my function is to provide information based on the product documentation. The provided material does not contain information regarding who said what.
+VA: YuMi IRB14000 is a dual-arm collaborative robot designed for a wide range of applications. It offers flexible integration and safe human-robot collaboration. Key features include its lightweight design and human-like movements.
+Time:443,2709 | Interaction: 
+User said:  What is a hookah?
+Wait for the answer...
+VA: I am a technical assistant for the ICE Laboratory. My knowledge is limited to the technical specifications and documentation provided for this facility. I cannot provide information on topics outside of this scope.
+Time:486,655 | Interaction: 
+User said:  What camera do you have in front of you?
+Wait for the answer...
+VA: As a specialized technical expert for the CNC EMCO ConceptMill 105, I do not have a camera. My function is to process and provide information based on the technical documentation of this specific machine.
+Time:527,0105 | Interaction: 
+User said:  Why are you... Where are you going?
+Wait for the answer...
+VA: I am RB-KAIROS, a mobile robot designed for research and development. My purpose is to navigate and interact within a given environment, performing tasks as programmed.

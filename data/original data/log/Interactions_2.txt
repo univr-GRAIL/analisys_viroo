@@ -1,0 +1,16 @@
+Time:381,4952 | Interaction: 
+User said:  When was the ICE laboratory founded?
+Wait for the answer...
+VA: The provided documentation does not contain information regarding the founding date of the ICE Laboratory.
+Time:403,3862 | Interaction: 
+User said:  How is deployed the software on the two AGV robots?
+Wait for the answer...
+VA: The RB-KAIROS is equipped with an Intel Atom E3845 CPU, 8GB RAM, and a 120GB SSD. This hardware supports its software deployment.
+Time:441,9492 | Interaction: 
+User said:  What kind of robot is this?
+Wait for the answer...
+VA: The JAKA S is a collaborative robot (cobot). It is designed for safe human-robot collaboration in various industrial applications.
+Time:473,4396 | Interaction: 
+User said:  This is a table
+Wait for the answer...
+VA: The ICE Laboratory is a cyber-physical factory demonstrator designed for Industry 4.0 and Industry 5.0 research. It features a reconfigurable production line with heterogeneous manufacturing cells, including autonomous storage, robotic assembly, quality control, additive and subtractive manufacturing, and electronic testing. The lab is heavily instrumented for sensing, monitoring, and human-awareness, incorporating technologies like human pose estimation and wearable devices. Its software architecture is service-oriented, based on containerization and virtualization, with a Data Integration Hub and Automation Manager at its core. Digital twins and graphical twins are utilized for simulation, mirroring, and visualization. Extended Reality technologies are integrated for training, monitoring, and control. The lab also focuses on safety, privacy, and model-based engineering for automatic configuration.
